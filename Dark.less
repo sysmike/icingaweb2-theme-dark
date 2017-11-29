@@ -1,85 +1,160 @@
-/*! Michael Süß | GPLv2+ */
-#layout {
-    background-color: #33373A;
-    color: #d2d2d2;
-    font-family: Calibri, "Lucida Grande", sans-serif;
-}
-#sidebar {
-    background-color: #292929;
-}
-#menu .user-nav-item {
-    background-color: #292929;
-}
-#menu input.search {
-    background: #636363 url(../img/icons/search.png) no-repeat 0.7em center;
-    background-size: 1em auto;
-    border: none;
-    border-left: 5px solid transparent;
-    line-height: 2.167em;
-    padding-left: 2.2em;
-    width: 100%;
-}
-#menu input.search.active {
-    background-color: #636363;
-    border-color: #0095bf;
-}
-#menu .nav-level-1 > .nav-item.active {
-    background-color: #000;
-    border-color: #0095bf;
-}
-.controls {
-    background-color: #292929;
-}
-.icinga-module.module-monitoring .state-table tr[href].active {
-    background-color: #292929;
-}
-button, input, optgroup, select, textarea {
-    color: #000000;
-    font: inherit;
-    margin: 0;
-}
-.control-button, input[type="submit"] {
-    border-radius: 3px;
-    -webkit-background-clip: padding-box;
-    -moz-background-clip: padding;
-    background-clip: padding-box;
-    background-color: #000;
-    border: 2px solid #0095bf;
-    color: #0095bf;
-    cursor: pointer;
-    outline: none;
-    padding: 0.5em 1em;
-    -webkit-transition: background 0.3s ease, color 0.3s ease;
-    -moz-transition: background 0.3s ease, color 0.3s ease;
-    -o-transition: background 0.3s ease, color 0.3s ease;
-    transition: background 0.3s ease, color 0.3s ease;
-}
-input[type="checkbox" i] {
-    margin: 3px 3px 3px 4px;
-}
-.icinga-module.module-monitoring .state-table tr[href]:hover {
-    background-color: #292929;
-    cursor: pointer;
-}
-a:focus {
-    background-color: #292929;
-}
-.icinga-module.module-businessprocess table.bp {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    color: #fff;
-    border-collapse: collapse;
-    border-spacing: 0;
-    box-sizing: border-box;
-    font-size: 1em;
-    font-weight: normal;
-}
-module.module-monitoring .grid .services-summary {
-    float: none;
+/*! Michael Süß | GPLv2+ | theme based on solarized-dark.less */
+
+@base01: #494949;
+@base00: #657b83;
+@base03: #33373A;
+@base0: #cacaca;
+
+@body-bg-color: @base03;
+
+@text-color: @base0;
+@text-color-light: @base0;
+@text-color-on-icinga-blue: @base0;
+@text-color-inverted: @base01;
+
+@link-color: @base0;
+
+@gray: @base0;
+@gray-light: @base01;
+@gray-lighter: #00222b;
+@gray-lightest: @base01;
+
+@tr-active-color: @base01;
+@tr-hover-color: @base01;
+
+.action-link {
+  color: @link-color;
 }
 
-.icinga-module.module-monitoring .boxview div.box.contents {
-   background-color:#33373A
+input, select {
+  background-color: @body-bg-color;
 }
 
+#menu {
+  background-color: @base01;
+
+  input.search {
+    color: @text-color;
+    background-image: url(../img/icons/search_white.png);
+
+    &:focus {
+      background-image: url(../img/icons/search_white.png) !important;
+    }
+  }
+
+  .nav-level-1 > .nav-item {
+    color: @text-color;
+
+    &.active, &:hover {
+      color: #ffffff;
+      background-color: #33373a;
+    }
+  }
+
+  .nav-level-2 > .nav-item {
+    color: @text-color;
+    background-color: @base03;
+
+    &.active, &:hover {
+      a {
+        color: #ffffff;
+      }
+      background-color: @base01;
+    }
+  }
+
+  .nav-itemxx{
+    &:hover,
+    &:hover > a,
+    &.active,
+    &.active > a {
+      color: #ffffff !important;
+      //background-color: @base01 !important;
+    }
+  }
+}
+
+.boxview a:focus {
+  color: @text-color;
+  text-decoration: underline;
+}
+
+.icinga-module.module-monitoring {
+  @timeline-notification-color: #1650CF;
+  @timeline-hard-state-color: #A24600;
+  @timeline-comment-color: #346964;
+  @timeline-ack-color: #855D18;
+  @timeline-downtime-start-color: #515151;
+  @timeline-downtime-end-color: #5e5e2f;
+
+  // Unfortunately it does not suffice to only override the timeline colors here, because our less compiler seems to
+  // have the related style block in module.less already evaluated
+
+  .timeline-notification {
+    background-color: @timeline-notification-color;
+
+    &.extrapolated {
+      background-color: lighten(@timeline-notification-color, 20%);
+    }
+  }
+
+  .timeline-hard-state {
+    background-color: @timeline-hard-state-color;
+
+    &.extrapolated {
+      background-color: lighten(@timeline-hard-state-color, 20%);
+    }
+  }
+
+  .timeline-comment {
+    background-color: @timeline-comment-color;
+
+    &.extrapolated {
+      background-color: lighten(@timeline-comment-color, 20%);
+    }
+  }
+
+  .timeline-ack {
+    background-color: @timeline-ack-color;
+
+    &.extrapolated {
+      background-color: lighten(@timeline-ack-color, 20%);
+    }
+  }
+
+  .timeline-downtime-start {
+    background-color: @timeline-downtime-start-color;
+
+    &.extrapolated {
+      background-color: lighten(@timeline-downtime-start-color, 20%);
+    }
+  }
+
+  .timeline-downtime-end {
+    background-color: @timeline-downtime-end-color;
+
+    &.extrapolated {
+      background-color: lighten(@timeline-downtime-end-color, 20%);
+    }
+  }
+}
+
+.icinga-module.module-monitoring {
+  .tactical {
+    .box {
+      border-color: @body-bg-color !important;
+    }
+
+    div.box.contents {
+      background: @body-bg-color;
+    }
+  }
+}
+
+.nav-item > a:hover {
+    color: #ffffff !important;
+}
+
+#toggle-sidebar {
+    color: #ffffff !important;
+}
