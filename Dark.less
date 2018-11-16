@@ -47,7 +47,7 @@ input, select {
 
     &.active, &:hover {
       color: #ffffff;
-      background-color: #33373a;
+      background-color: @base03;
     }
   }
 
@@ -161,5 +161,30 @@ input, select {
 
 #mobile-menu-toggle {
     color: #ffffff !important;
-    text-align: right;
+}
+
+#main div.filter form.editor ul.tree li.active {
+    background-color: @base03 !important;
+}
+
+.badge {
+	color: #ffffff !important;
+}
+
+input.search {
+    background: transparent url(../img/icons/search_white.png) no-repeat scroll 0.1em center !important;
+    background-size: 1em 1em !important;
+    padding-left: 1.5em !important;
+}
+
+textarea {
+    background: transparent;
+}
+
+.search-reset {
+    color: @base0;
+}
+
+.icinga-module.module-director ul.main-actions li a {
+    color: @base0;
 }
